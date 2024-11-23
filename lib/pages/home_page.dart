@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sigset_xtc/widgets/card_widget.dart';
 import 'package:sigset_xtc/widgets/footer_widget.dart';
 import 'package:sigset_xtc/widgets/header_widget.dart';
 import 'package:sigset_xtc/widgets/main_button_icon_widget.dart';
@@ -71,10 +72,49 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            FooterWidget(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TitleWidget(
+                  text: "Últimos Avisos",
+                  fontSize: 18,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                CardWidget(
+                    title: "Recordatorios de pago",
+                    date: "02/11/2024",
+                    description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare consectetur."),
+                SizedBox(
+                  height: 20,
+                ),
+                CardWidget(
+                    title: "Promociones fin de año",
+                    date: "30/10/2024",
+                    description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare consectetur."),
+                SizedBox(
+                  height: 20,
+                ),
+                CardWidget(
+                    title: "Cambios en los horarios",
+                    date: "24/10/2024",
+                    description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare consectetur."),
+                SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           ],
         ),
       ),
+      bottomNavigationBar: FooterWidget(),
     );
   }
 }

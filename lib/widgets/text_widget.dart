@@ -25,6 +25,8 @@ class TextWidget extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.bold,
       ),
       textAlign: textAlign ?? TextAlign.center,
+      softWrap: true,
+      overflow: TextOverflow.visible,
     );
   }
 }

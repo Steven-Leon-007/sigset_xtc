@@ -64,7 +64,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               text: "Ingresar",
               onPressed: _isButtonEnabled
                   ? () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           PageTransition(
                             child: const HomePage(),
