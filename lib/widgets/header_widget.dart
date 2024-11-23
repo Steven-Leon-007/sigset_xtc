@@ -31,11 +31,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           ),
           if (!widget.isLoginPage)
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-              width: MediaQuery.of(context).size.width *0.3,
+              height: MediaQuery.of(context).size.height * 0.07,
+              width: MediaQuery.of(context).size.width * 0.3,
               child: IconButton(
                 icon: Image.asset("assets/bell_icon.png"),
-                iconSize: 30,
+                iconSize: 24,
                 onPressed: () {
                   print('button pressed');
                 },

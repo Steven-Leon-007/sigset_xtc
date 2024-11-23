@@ -1,17 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:sigset_xtc/widgets/footer_login_widget.dart';
 import 'package:sigset_xtc/widgets/header_widget.dart';
+import 'package:sigset_xtc/widgets/login_form_widget.dart';
+import 'package:sigset_xtc/widgets/text_widget.dart';
+import 'package:sigset_xtc/widgets/title_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(children: [
-        HeaderWidget(isLoginPage: false,),
-        FooterLoginWidget()
-      ],),
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top,
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const HeaderWidget(
+                isLoginPage: true,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              const Column(
+                children: [
+                  TitleWidget(
+                    text: "SIGSET-XTC",
+                    fontSize: 28,
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  TextWidget(
+                    text:
+                        "Tu plataforma ideal para controlar tu progreso y alcanzar tus metas",
+                  ),
+                ],
+              ),
+              const LoginFormWidget(),
+              SizedBox(
+                height:
+                    MediaQuery.of(context).viewInsets.bottom == 0 ? 25 : 10,
+              ),
+              const FooterLoginWidget(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -12,7 +12,6 @@ import 'package:sigset_xtc/pages/training_page.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -35,7 +34,7 @@ class _MainAppState extends State<MainApp> {
           fontFamily: 'Raleway',
           textTheme:
               const TextTheme(bodyMedium: TextStyle(fontFamily: "Raleway"))),
-      initialRoute: "/",
+      initialRoute: "/home",
       routes: {
         "/": (context) => const LoginPage(),
         "/home": (context) => const HomePage(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sigset_xtc/widgets/text_widget.dart';
 
 class FooterWidget extends StatelessWidget {
   FooterWidget({super.key});
@@ -20,13 +21,19 @@ class FooterWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: footerItems.map((item) {
-            return IconButton(
-              icon: Image.asset(item['iconPath']!),
-              iconSize: 30,
-              tooltip: item['name'],
-              onPressed: () {
-                print('${item['name']} button pressed');
-              },
+            return GestureDetector(
+              onTap: () {},
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    item['iconPath']!,
+                    height: MediaQuery.of(context).size.width * 0.1,
+                    width: 30,
+                  ),
+                  TextWidget(text: item['name']!, fontSize: 10,)
+                ],
+              ),
             );
           }).toList(),
         ));

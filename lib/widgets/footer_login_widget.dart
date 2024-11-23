@@ -9,11 +9,13 @@ class FooterLoginWidget extends StatelessWidget {
     return Container(
       color: const Color.fromARGB(255, 19, 19, 19),
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.08,
+      alignment: Alignment.center,
       child: const TextWidget(
         text: "Diseñado y Construido por Xtreme Training Center",
         fgColor: Colors.white,
-        fontSize: 18,
+        fontSize: 15,
+        fontWeight: FontWeight.normal,
       ),
     );
   }

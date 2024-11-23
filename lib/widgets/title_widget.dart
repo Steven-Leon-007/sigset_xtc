@@ -5,7 +5,7 @@ class TitleWidget extends StatelessWidget {
       {required this.text,
       this.fgColor,
       this.textAlign,
-      this.lineBreakCharacter = '-',
+      this.lineBreakCharacter = '_',
       this.fontSize,
       super.key});
 
@@ -23,7 +23,7 @@ class TitleWidget extends StatelessWidget {
       return TextSpan(
         text: isLastSegment ? segment : '$segment\n',
         style: TextStyle(
-          color: fgColor ?? Colors.black,
+          color: fgColor ?? Colors.white,
           fontSize: fontSize ?? 36.0,
           fontWeight: FontWeight.bold,
           letterSpacing: 4,
