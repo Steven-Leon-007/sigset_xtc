@@ -36,9 +36,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               child: IconButton(
                 icon: Image.asset("assets/bell_icon.png"),
                 iconSize: 24,
-                onPressed: () {
-                  print('button pressed');
-                },
+                onPressed: () {},
               ),
             ),
         ],

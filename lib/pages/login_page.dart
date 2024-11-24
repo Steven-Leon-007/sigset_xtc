@@ -20,16 +20,16 @@ class LoginPage extends StatelessWidget {
             top: MediaQuery.of(context).padding.top,
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const HeaderWidget(
+              HeaderWidget(
                 isLoginPage: true,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 50,
               ),
-              const Column(
+              Column(
                 children: [
                   TitleWidget(
                     text: "SIGSET-XTC",
@@ -44,16 +44,12 @@ class LoginPage extends StatelessWidget {
                   ),
                 ],
               ),
-              const LoginFormWidget(),
-              SizedBox(
-                height:
-                    MediaQuery.of(context).viewInsets.bottom == 0 ? 25 : 10,
-              ),
-              const FooterLoginWidget(),
+              LoginFormWidget(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const FooterLoginWidget(),
     );
   }
 }

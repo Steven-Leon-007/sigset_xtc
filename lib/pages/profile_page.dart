@@ -186,7 +186,6 @@ class ProfilePage extends StatelessWidget {
                   text: "Editar Perfil",
                   onPressed: () {},
                   bgColor: const Color.fromARGB(255, 124, 58, 8),
-
                 )),
             const SizedBox(height: 32),
           ],

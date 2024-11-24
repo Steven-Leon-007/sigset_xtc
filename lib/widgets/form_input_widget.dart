@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 class FormInputWidget extends StatelessWidget {
-  const FormInputWidget({super.key, required this.placeholderText, this.isPasswordInput = false});
+  const FormInputWidget(
+      {super.key,
+      required this.placeholderText,
+      this.isPasswordInput = false,
+      this.textEditingController});
 
   final String placeholderText;
   final bool isPasswordInput;
+  final TextEditingController? textEditingController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: textEditingController,
       style: const TextStyle(
         color: Colors.white,
       ),

@@ -14,6 +14,7 @@ class LoginFormWidget extends StatefulWidget {
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
   bool _isButtonEnabled = false;
 
   void _validateForm() {
@@ -37,13 +38,14 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextWidget(text: "Email"),
-                SizedBox(height: 8),
+                const TextWidget(text: "Email"),
+                const SizedBox(height: 8),
                 FormInputWidget(
                   placeholderText: "example@example.com",
+                  textEditingController: _emailController,
                 ),
               ],
             ),
@@ -75,7 +77,53 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             ),
             TextButton(
               onPressed: () {
-                print("Recuperar contraseña");
+                final email = _emailController.text.trim();
+                if (email.isEmpty) {
+                  // Si el correo está vacío, mostramos un mensaje de error
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Error"),
+                        content: const Text(
+                            "Por favor, ingresa un correo para recuperar tu contraseña."),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context); // Cerrar el diálogo
+                            },
+                            child: const Text("OK"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  // Si el correo está ingresado, mostramos un mensaje de éxito
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: const Color.fromARGB(255, 28, 28, 28),
+                        title: const TextWidget(text: "Recuperar Contraseña"),
+                        content: TextWidget(
+                            text:
+                                "Se ha enviado un correo de recuperación a: $email"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const TextWidget(
+                              text: "OK",
+                              fgColor: Color(0xFFB00020),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
