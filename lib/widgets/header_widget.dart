@@ -31,7 +31,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           ),
           if (!widget.isLoginPage)
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.07,
+              height: MediaQuery.of(context).size.height * 0.06,
               width: MediaQuery.of(context).size.width * 0.3,
               child: IconButton(
                 icon: Image.asset("assets/bell_icon.png"),

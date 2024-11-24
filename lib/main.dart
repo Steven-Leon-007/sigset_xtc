@@ -34,7 +34,7 @@ class _MainAppState extends State<MainApp> {
           fontFamily: 'Raleway',
           textTheme:
               const TextTheme(bodyMedium: TextStyle(fontFamily: "Raleway"))),
-      initialRoute: "/",
+      initialRoute: "/home",
       routes: {
         "/": (context) => const LoginPage(),
         "/home": (context) => const HomePage(),

@@ -48,7 +48,7 @@ class FooterWidget extends StatelessWidget {
                 final currentRoute = ModalRoute.of(context)?.settings.name;
 
                 if (currentRoute != item['redirect']) {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     PageTransition(
                       type:

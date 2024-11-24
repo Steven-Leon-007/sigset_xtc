@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:sigset_xtc/pages/nutrition_page.dart';
+import 'package:sigset_xtc/pages/report_page.dart';
+import 'package:sigset_xtc/pages/training_page.dart';
 import 'package:sigset_xtc/widgets/card_widget.dart';
 import 'package:sigset_xtc/widgets/footer_widget.dart';
 import 'package:sigset_xtc/widgets/header_widget.dart';
@@ -40,7 +44,14 @@ class HomePage extends StatelessWidget {
                         children: [
                           MainButtonIconWidget(
                             text: "Alimentación",
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    child: const NutritionPage(),
+                                    type: PageTransitionType.fade,
+                                  ));
+                            },
                             bgColor: const Color.fromARGB(255, 217, 217, 217),
                             iconPath: "assets/nutrition_home_icon.png",
                             fgColor: Colors.black,
@@ -50,7 +61,14 @@ class HomePage extends StatelessWidget {
                           ),
                           MainButtonIconWidget(
                             text: "Entrenamiento",
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    child: const TrainingPage(),
+                                    type: PageTransitionType.fade,
+                                  ));
+                            },
                             bgColor: const Color.fromARGB(255, 217, 217, 217),
                             iconPath: "assets/training_home_icon.png",
                             fgColor: Colors.black,
@@ -60,7 +78,14 @@ class HomePage extends StatelessWidget {
                           ),
                           MainButtonIconWidget(
                             text: "Tu Progreso",
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    child: const ReportPage(),
+                                    type: PageTransitionType.fade,
+                                  ));
+                            },
                             bgColor: const Color.fromARGB(255, 189, 130, 9),
                             iconPath: "assets/reports_home_icon.png",
                             fgColor: Colors.black,
