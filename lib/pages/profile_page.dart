@@ -3,8 +3,10 @@ import 'package:page_transition/page_transition.dart';
 import 'package:sigset_xtc/pages/membership_page.dart';
 import 'package:sigset_xtc/widgets/button_app_widget.dart';
 import 'package:sigset_xtc/widgets/footer_widget.dart';
+import 'package:sigset_xtc/widgets/form_input_widget.dart';
 import 'package:sigset_xtc/widgets/header_widget.dart';
 import 'package:sigset_xtc/widgets/text_widget.dart';
+import 'package:sigset_xtc/widgets/title_widget.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -122,7 +124,47 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    color: const Color.fromARGB(255, 91, 91, 91), width: 1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const TitleWidget(
+                    text: "Registrar metas y objetivos",
+                    fontSize: 18,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    child: const FormInputWidget(
+                        placeholderText: "Registrar una nueva meta personal"),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: ButtonAppWidget(
+                        text: "Agregar Meta",
+                        onPressed: () {},
+                      )),
+                  const SizedBox(height: 32),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
             SizedBox(
                 width: MediaQuery.of(context).size.width * 0.75,
                 child: ButtonAppWidget(
@@ -143,6 +185,8 @@ class ProfilePage extends StatelessWidget {
                 child: ButtonAppWidget(
                   text: "Editar Perfil",
                   onPressed: () {},
+                  bgColor: const Color.fromARGB(255, 124, 58, 8),
+
                 )),
             const SizedBox(height: 32),
           ],

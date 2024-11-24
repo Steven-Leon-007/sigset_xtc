@@ -45,7 +45,7 @@ class ReportPage extends StatelessWidget {
                 height: 30,
               ),
               const ButtonReportWidget(
-                  iconPath: "assets/financial_icon.png", name: "Financiero"),
+                  iconPath: "assets/financial_icon.png", name: "Historial de pagos"),
             ],
           )
         ],
