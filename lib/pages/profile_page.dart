@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17), // Fondo oscuro
+      backgroundColor: Theme.of(context).colorScheme.surface, // Fondo oscuro
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -22,15 +22,16 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            const Column(
+            Column(
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: Color.fromARGB(255, 34, 34, 34),
+                  backgroundColor:
+                      Theme.of(context).colorScheme.secondaryContainer,
                   child: Icon(
                     Icons.person, // Ícono de perfil predeterminado
                     size: 50,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
                 SizedBox(height: 16),
@@ -38,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                   'Nombre del Usuario', // Nombre dinámico
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -47,19 +48,20 @@ class ProfilePage extends StatelessWidget {
                   'Membresía Activa', // Estado de membresía
                   style: TextStyle(
                     fontSize: 16,
-                    color: Color.fromARGB(255, 209, 209, 209),
+                    color: Theme.of(context).colorScheme.primary.withAlpha(200),
+                    fontWeight: FontWeight.bold
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 32),
             Card(
-              color: const Color.fromARGB(255, 34, 34, 34),
+              color: Theme.of(context).colorScheme.secondaryContainer,
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                       'Información Personal',
                       style: TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -90,12 +92,12 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Card(
-              color: const Color.fromARGB(255, 34, 34, 34),
+              color: Theme.of(context).colorScheme.secondaryContainer,
               elevation: 4,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +106,7 @@ class ProfilePage extends StatelessWidget {
                       'Progreso Reciente',
                       style: TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

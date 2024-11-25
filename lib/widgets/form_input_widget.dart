@@ -15,17 +15,17 @@ class FormInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textEditingController,
-      style: const TextStyle(
-        color: Colors.white,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Theme.of(context).colorScheme.primary,
       ),
       obscureText: isPasswordInput,
       decoration: InputDecoration(
         hintText: placeholderText,
-        hintStyle: const TextStyle(
-          color: Colors.grey,
-        ),
+        hintStyle: TextStyle(
+            color: Theme.of(context).colorScheme.primary.withAlpha(150)),
         filled: true,
-        fillColor: const Color.fromARGB(255, 28, 28, 28),
+        fillColor: Theme.of(context).colorScheme.secondaryContainer,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,

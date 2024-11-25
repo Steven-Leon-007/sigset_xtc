@@ -12,7 +12,7 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         children: [
           const HeaderWidget(),
@@ -92,7 +92,7 @@ class ButtonReportWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: const Color(0xFFB00020)),
+            color: Theme.of(context).colorScheme.primaryContainer),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -101,7 +101,7 @@ class ButtonReportWidget extends StatelessWidget {
               width: 30,
               height: 30,
             ),
-            TextWidget(text: name),
+            TextWidget(text: name, fgColor: Colors.white,),
           ],
         ),
       ),

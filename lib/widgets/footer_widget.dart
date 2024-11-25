@@ -37,7 +37,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: const Color.fromARGB(255, 19, 19, 19),
+        color: Color.fromARGB(255, 22, 22, 22),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.1,
         child: Row(
@@ -70,6 +70,7 @@ class FooterWidget extends StatelessWidget {
                   TextWidget(
                     text: item['name']!,
                     fontSize: 10,
+                    fgColor: Colors.white,
                   )
                 ],
               ),

@@ -10,8 +10,10 @@ class NutritionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
           child: Column(children: [
         const HeaderWidget(),
@@ -30,12 +32,14 @@ class NutritionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                icon: Icon(Icons.arrow_back,
+                    color: Theme.of(context).colorScheme.primary),
                 onPressed: () {},
               ),
               const TextWidget(text: "Semana 3 (28 oct - 03 nov)"),
               IconButton(
-                icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                icon: Icon(Icons.arrow_forward,
+                    color: Theme.of(context).colorScheme.primary),
                 onPressed: () {},
               ),
             ],
@@ -51,7 +55,9 @@ class NutritionPage extends StatelessWidget {
             height: 25,
           ),
           Image.asset(
-            "assets/graphs_icons.png",
+            isDarkTheme
+                ? "assets/graphs_icons.png"
+                : "assets/graphs_home_icons.png",
             width: MediaQuery.of(context).size.width * 0.7,
           ),
           const SizedBox(
@@ -152,20 +158,21 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
         TextField(
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(
+                color: Theme.of(context).colorScheme.primary.withAlpha(150)),
             filled: true,
-            fillColor: const Color.fromARGB(255, 34, 34, 34),
+            fillColor: Theme.of(context).colorScheme.secondaryContainer,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide.none,
@@ -201,8 +208,8 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
@@ -211,20 +218,22 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 6),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 34, 34, 34),
+            color: Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(8),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
-              dropdownColor: const Color.fromARGB(255, 34, 34, 34),
-              style: const TextStyle(color: Colors.white),
-              icon: const Icon(
+              dropdownColor: Theme.of(context).colorScheme.secondaryContainer,
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+              icon: Icon(
                 Icons.arrow_drop_down,
-                color: Colors.grey,
+                color: Theme.of(context).colorScheme.primary.withAlpha(150),
               ),
               hint: Text(
                 selected,
-                style: const TextStyle(color: Colors.grey),
+                style: TextStyle(
+                    color:
+                        Theme.of(context).colorScheme.primary.withAlpha(150)),
               ),
               items: widget.items
                   .map(

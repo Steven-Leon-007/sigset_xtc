@@ -10,7 +10,7 @@ class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(children: [
         const HeaderWidget(),
         SizedBox(
@@ -104,7 +104,7 @@ class PaymentCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        color: const Color.fromARGB(255, 34, 34, 34),
+        color: Theme.of(context).colorScheme.secondaryContainer,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           child: Row(
@@ -115,8 +115,8 @@ class PaymentCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -136,9 +136,9 @@ class PaymentCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Icon(
+              Icon(
                 Icons.arrow_forward_ios,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 size: 18,
               ),
             ],

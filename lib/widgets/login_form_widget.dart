@@ -84,15 +84,29 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text("Error"),
-                        content: const Text(
-                            "Por favor, ingresa un correo para recuperar tu contraseña."),
+                        title: Text(
+                          "Error",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer),
+                        ),
+                        content: Text(
+                          "Por favor, ingresa un correo para recuperar tu contraseña.",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context); // Cerrar el diálogo
                             },
-                            child: const Text("OK"),
+                            child: TextWidget(
+                              text: "OK",
+                              fgColor: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
+                            ),
                           ),
                         ],
                       );
@@ -104,7 +118,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 28, 28, 28),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondaryContainer,
                         title: const TextWidget(text: "Recuperar Contraseña"),
                         content: TextWidget(
                             text:
@@ -114,9 +129,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const TextWidget(
+                            child: TextWidget(
                               text: "OK",
-                              fgColor: Color(0xFFB00020),
+                              fgColor: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
                             ),
                           ),
                         ],
@@ -128,11 +145,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
               ),
-              child: const Text(
+              child: Text(
                 "¿Olvidaste tu Contraseña?",
                 style: TextStyle(
                   decoration: TextDecoration.underline,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
                 ),

@@ -12,7 +12,7 @@ class MembershipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -81,7 +81,7 @@ class MembershipCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        color: const Color.fromARGB(255, 34, 34, 34),
+        color: Theme.of(context).colorScheme.secondaryContainer,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -89,8 +89,8 @@ class MembershipCard extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 139, 0, 0),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
                   topRight: Radius.circular(12),
@@ -99,8 +99,8 @@ class MembershipCard extends StatelessWidget {
               child: Text(
                 planName,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -110,8 +110,8 @@ class MembershipCard extends StatelessWidget {
 
             Text(
               price,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
@@ -129,18 +129,19 @@ class MembershipCard extends StatelessWidget {
                       ));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      const Color.fromARGB(255, 139, 0, 0), // Color del botón
+                  backgroundColor: Theme.of(context)
+                      .colorScheme
+                      .primaryContainer, // Color del botón
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
-                child: const Text(
+                child: Text(
                   "Adquirir",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: 16,
                   ),
                 ),

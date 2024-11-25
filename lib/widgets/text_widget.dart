@@ -20,7 +20,7 @@ class TextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: fgColor ?? Colors.white,
+        color: fgColor ?? Theme.of(context).colorScheme.primary,
         fontSize: fontSize,
         fontWeight: fontWeight ?? FontWeight.bold,
       ),

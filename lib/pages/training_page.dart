@@ -11,7 +11,7 @@ class TrainingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -32,13 +32,14 @@ class TrainingPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      icon: Icon(Icons.arrow_back,
+                          color: Theme.of(context).colorScheme.primary),
                       onPressed: () {},
                     ),
                     const TextWidget(text: "Semana 3 (28 oct - 03 nov)"),
                     IconButton(
-                      icon:
-                          const Icon(Icons.arrow_forward, color: Colors.white),
+                      icon: Icon(Icons.arrow_forward,
+                          color: Theme.of(context).colorScheme.primary),
                       onPressed: () {},
                     ),
                   ],
@@ -89,7 +90,7 @@ class TrainingPage extends StatelessWidget {
                   description:
                       'x4 Leg extension (Machine), x4 Hamstrings Curl (Machine)...',
                   onTap: () {},
-                  bgColor: const Color.fromARGB(255, 172, 17, 33),
+                  bgColor: Theme.of(context).colorScheme.primaryContainer,
                 ),
                 const SizedBox(
                   height: 10,
@@ -142,7 +143,7 @@ class CardTrainingWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Card(
-          color: bgColor ?? const Color.fromARGB(255, 34, 34, 34),
+          color: bgColor ?? Theme.of(context).colorScheme.secondaryContainer,
           elevation: 4,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -153,9 +154,9 @@ class CardTrainingWidget extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: const Icon(
+                  child: Icon(
                     Icons.fitness_center,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primary,
                     size: 24,
                   ),
                 ),
@@ -166,8 +167,8 @@ class CardTrainingWidget extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -175,9 +176,10 @@ class CardTrainingWidget extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         description,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary.withAlpha(200),
                           fontSize: 14,
+                          fontWeight: FontWeight.bold
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -186,9 +188,9 @@ class CardTrainingWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 16),
-                const Icon(
+                Icon(
                   Icons.arrow_forward_ios,
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.primary,
                   size: 16,
                 ),
               ],

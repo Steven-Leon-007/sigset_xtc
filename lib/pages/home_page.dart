@@ -15,8 +15,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 17, 13, 17),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -52,9 +54,12 @@ class HomePage extends StatelessWidget {
                                     type: PageTransitionType.fade,
                                   ));
                             },
-                            bgColor: const Color.fromARGB(255, 217, 217, 217),
-                            iconPath: "assets/nutrition_home_icon.png",
-                            fgColor: Colors.black,
+                            bgColor:
+                                Theme.of(context).colorScheme.tertiaryContainer,
+                            iconPath: isDarkTheme
+                                ? "assets/nutrition_home_icon.png"
+                                : "assets/nutrition_icon.png",
+                            fgColor: Theme.of(context).colorScheme.secondary,
                           ),
                           const SizedBox(
                             height: 20,
@@ -69,9 +74,12 @@ class HomePage extends StatelessWidget {
                                     type: PageTransitionType.fade,
                                   ));
                             },
-                            bgColor: const Color.fromARGB(255, 217, 217, 217),
-                            iconPath: "assets/training_home_icon.png",
-                            fgColor: Colors.black,
+                            bgColor:
+                                Theme.of(context).colorScheme.tertiaryContainer,
+                            iconPath: isDarkTheme
+                                ? "assets/training_home_icon.png"
+                                : "assets/training_icon.png",
+                            fgColor: Theme.of(context).colorScheme.secondary,
                           ),
                           const SizedBox(
                             height: 20,
@@ -87,8 +95,10 @@ class HomePage extends StatelessWidget {
                                   ));
                             },
                             bgColor: const Color.fromARGB(255, 189, 130, 9),
-                            iconPath: "assets/reports_home_icon.png",
-                            fgColor: Colors.black,
+                            iconPath: isDarkTheme
+                                ? "assets/reports_home_icon.png"
+                                : "assets/reports_icon.png",
+                            fgColor: Theme.of(context).colorScheme.secondary,
                           ),
                         ],
                       )

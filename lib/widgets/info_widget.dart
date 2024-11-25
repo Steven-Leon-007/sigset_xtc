@@ -21,14 +21,14 @@ class InfoWidget extends StatelessWidget {
         border:
             Border.all(color: const Color.fromARGB(255, 91, 91, 91), width: 1),
         borderRadius: BorderRadius.circular(12),
-        color: const Color.fromARGB(255, 30, 30, 30),
+        color: Theme.of(context).colorScheme.secondaryContainer,
       ),
       child: Column(
         children: [
           IconButton(
             icon: Icon(
               icon,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.primary,
               size: 40,
             ),
             onPressed: () {},

@@ -8,6 +8,7 @@ import 'package:sigset_xtc/pages/nutrition_page.dart';
 import 'package:sigset_xtc/pages/payment_page.dart';
 import 'package:sigset_xtc/pages/report_page.dart';
 import 'package:sigset_xtc/pages/training_page.dart';
+import 'package:sigset_xtc/theme/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,10 +31,8 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          fontFamily: 'Raleway',
-          textTheme:
-              const TextTheme(bodyMedium: TextStyle(fontFamily: "Raleway"))),
+      theme: lightMode,
+      darkTheme: darkMode,
       initialRoute: "/",
       routes: {
         "/": (context) => const LoginPage(),
