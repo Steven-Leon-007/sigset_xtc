@@ -14,7 +14,6 @@ class LoginPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surface,
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,

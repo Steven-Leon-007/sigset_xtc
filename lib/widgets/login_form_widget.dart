@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sigset_xtc/pages/home_page.dart';
+import 'package:sigset_xtc/services/preferences_service.dart';
 import 'package:sigset_xtc/widgets/button_app_widget.dart';
 import 'package:sigset_xtc/widgets/form_input_widget.dart';
 import 'package:sigset_xtc/widgets/text_widget.dart';
@@ -16,11 +17,16 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   bool _isButtonEnabled = false;
+  String _selectedUserType = "Usuario";
 
   void _validateForm() {
     setState(() {
       _isButtonEnabled = _formKey.currentState?.validate() ?? false;
     });
+  }
+
+  Future<void> _saveUserInfo(String userType) async {
+    PreferencesService.saveUserType(userType);
   }
 
   @override
@@ -62,10 +68,59 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               ],
             ),
             const SizedBox(height: 30),
+            // RadioButtons para seleccionar tipo de usuario
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const TextWidget(text: "Tipo de Usuario"),
+                Column(
+                  children: [
+                    RadioListTile<String>(
+                      title: Text("Usuario",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
+                      value: "Usuario",
+                      groupValue: _selectedUserType,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedUserType = value!;
+                        });
+                      },
+                    ),
+                    RadioListTile<String>(
+                      title: Text("Entrenador",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
+                      value: "Entrenador",
+                      groupValue: _selectedUserType,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedUserType = value!;
+                        });
+                      },
+                    ),
+                    RadioListTile<String>(
+                      title: Text("Administrador",
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold)),
+                      value: "Administrador",
+                      groupValue: _selectedUserType,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedUserType = value!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
             ButtonAppWidget(
               text: "Ingresar",
               onPressed: _isButtonEnabled
-                  ? () {
+                  ? () async {
+                      await _saveUserInfo(_selectedUserType);
                       Navigator.pushReplacement(
                           context,
                           PageTransition(

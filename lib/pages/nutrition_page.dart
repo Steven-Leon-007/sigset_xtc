@@ -166,7 +166,9 @@ class CustomTextField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextField(
-          style: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: TextStyle(

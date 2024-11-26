@@ -88,7 +88,7 @@ class FooterWidget extends StatelessWidget {
       case "/home":
         return const HomePage();
       case "/profile":
-        return const ProfilePage();
+        return ProfilePage();
       case "/reports":
         return const ReportPage();
       default:

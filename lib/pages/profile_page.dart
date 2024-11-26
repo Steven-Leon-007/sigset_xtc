@@ -1,20 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:sigset_xtc/pages/membership_page.dart';
+import 'package:sigset_xtc/pages/create_post_page.dart';
+import 'package:sigset_xtc/pages/nutrition_info_page.dart';
+import 'package:sigset_xtc/pages/training_info_page.dart';
+import 'package:sigset_xtc/pages/user_info_page.dart';
+import 'package:sigset_xtc/services/preferences_service.dart';
 import 'package:sigset_xtc/widgets/button_app_widget.dart';
 import 'package:sigset_xtc/widgets/footer_widget.dart';
-import 'package:sigset_xtc/widgets/form_input_widget.dart';
 import 'package:sigset_xtc/widgets/header_widget.dart';
-import 'package:sigset_xtc/widgets/text_widget.dart';
-import 'package:sigset_xtc/widgets/title_widget.dart';
+import 'package:sigset_xtc/widgets/user_profile_widget.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends StatefulWidget {
+  ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  String userType = "Usuario";
+  List<String> content = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    userVariations();
+  }
+
+  void userVariations() async {
+    userType = await PreferencesService.getUserType();
+    setState(() {
+      switch (userType) {
+        case "Usuario":
+          content.add("Membresía Activa");
+          break;
+        case "Entrenador":
+          content.add("Entrenador");
+          break;
+        case "Administrador":
+          content.add("Administrador");
+          break;
+        default:
+          break;
+      }
+      isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(), // Indicador de carga
+      );
+    }
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface, // Fondo oscuro
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -29,14 +71,14 @@ class ProfilePage extends StatelessWidget {
                   backgroundColor:
                       Theme.of(context).colorScheme.secondaryContainer,
                   child: Icon(
-                    Icons.person, // Ícono de perfil predeterminado
+                    Icons.person,
                     size: 50,
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
                 SizedBox(height: 16),
                 Text(
-                  'Nombre del Usuario', // Nombre dinámico
+                  'Nombre del ${content[0]}',
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).colorScheme.primary,
@@ -45,151 +87,84 @@ class ProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  'Membresía Activa', // Estado de membresía
+                  content[0],
                   style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).colorScheme.primary.withAlpha(200),
-                    fontWeight: FontWeight.bold
-                  ),
+                      fontSize: 16,
+                      color:
+                          Theme.of(context).colorScheme.primary.withAlpha(200),
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             const SizedBox(height: 32),
-            Card(
-              color: Theme.of(context).colorScheme.secondaryContainer,
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Información Personal',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    TextWidget(
-                      text: 'Correo Electrónico: usuario@email.com',
-                    ),
-                    SizedBox(height: 8),
-                    TextWidget(
-                      text: 'Teléfono: +57 3126056428',
-                    ),
-                    SizedBox(height: 8),
-                    TextWidget(
-                      text: 'Fecha de Registro: 01/01/2024',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Card(
-              color: Theme.of(context).colorScheme.secondaryContainer,
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Progreso Reciente',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    TextWidget(
-                      text: '• 5 sesiones completadas esta semana',
-                    ),
-                    SizedBox(height: 8),
-                    TextWidget(
-                      text: '• Última actividad: Chest Day - I',
-                    ),
-                    SizedBox(height: 8),
-                    TextWidget(
-                      text: '• Calorías quemadas: 450 kcal',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: const Color.fromARGB(255, 91, 91, 91), width: 1),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
+            if (userType == "Usuario") UserProfileWidget(),
+            if ((userType == "Administrador" || userType == "Entrenador") &&
+                userType != "Usuario")
+              Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const TitleWidget(
-                    text: "Registrar metas y objetivos",
-                    fontSize: 18,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    child: const FormInputWidget(
-                        placeholderText: "Registrar una nueva meta personal"),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7,
+                      width: MediaQuery.of(context).size.width * 0.75,
                       child: ButtonAppWidget(
-                        text: "Agregar Meta",
-                        onPressed: () {},
+                        text: "Consultar Usuario",
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                child: const UserInfoPage(),
+                                type: PageTransitionType.fade,
+                              ));
+                        },
+                        bgColor: Theme.of(context).colorScheme.primaryContainer,
                       )),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      child: ButtonAppWidget(
+                        text: "Consultar Plan de Alimentación",
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                child: const NutritionInfoPage(),
+                                type: PageTransitionType.fade,
+                              ));
+                        },
+                        bgColor: Theme.of(context).colorScheme.primaryContainer,
+                      )),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      child: ButtonAppWidget(
+                        text: "Consultar Plan de Entrenamiento",
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                child: const TrainingInfoPage(),
+                                type: PageTransitionType.fade,
+                              ));
+                        },
+                        bgColor: Theme.of(context).colorScheme.primaryContainer,
+                      )),
+                  const SizedBox(height: 16),
                 ],
               ),
-            ),
-            const SizedBox(height: 30),
-            SizedBox(
-                width: MediaQuery.of(context).size.width * 0.75,
-                child: ButtonAppWidget(
-                  text: "Renovar Membresía",
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                          child: const MembershipPage(),
-                          type: PageTransitionType.fade,
-                        ));
-                  },
-                  bgColor: const Color.fromARGB(255, 189, 130, 9),
-                )),
+            if (userType == "Administrador")
+              SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  child: ButtonAppWidget(
+                    text: "Crear Publicación",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                            child: const CreatePostPage(),
+                            type: PageTransitionType.fade,
+                          ));
+                    },
+                    bgColor: const Color.fromARGB(255, 189, 130, 9),
+                  )),
             const SizedBox(height: 16),
-            SizedBox(
-                width: MediaQuery.of(context).size.width * 0.75,
-                child: ButtonAppWidget(
-                  text: "Editar Perfil",
-                  onPressed: () {},
-                  bgColor: const Color.fromARGB(255, 124, 58, 8),
-                )),
-            const SizedBox(height: 32),
           ],
         ),
       ),
